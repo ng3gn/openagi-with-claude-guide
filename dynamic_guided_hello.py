@@ -105,22 +105,18 @@ async def main():
     agent.max_steps = 150
 
     agent.set_task(
-        task="Use FreeCAD to make a part with PartDesign workbench",
+        task="Create a 20mm x 30mm x 40mm rectangular prism with one corner at the origin using PartDesign",
         todos=[
-            "Ensure you are in the PartDesign workbench. Look at the workbench dropdown at the top toolbar to verify.",
-            "Create a new Body if one doesn't exist: Click 'Create Body' button in the PartDesign toolbar or menu.",
-            "Create a new sketch: Click the 'Create Sketch' button (looks like a pencil/sheet icon) in the PartDesign toolbar.",
-            "Select the XY plane: In the dialog that appears, click on 'XY_Plane' option and click OK button.",
-            "Find the rectangle tool: Look in the Sketch toolbar (usually appears when sketch mode is active). The rectangle tool may be under 'Sketch' menu > 'Sketcher geometries' > 'Create rectangle' OR as a rectangle icon in the sketch toolbar. Try clicking the Sketch menu first.",
-            "Draw a rectangle: Click and drag from approximately (-10, -10) to (10, 10) to create a 20mm square centered roughly on the origin. Click once to start the rectangle, move the mouse, and click again to finish.",
-            "Apply horizontal distance constraint: Click on the top edge of the rectangle to select it. Then click the 'Constrain horizontal distance' button (or Sketch menu > Constrain horizontal distance). Enter 20 in the dialog and click OK.",
-            "Apply vertical distance constraint: Click on the left or right edge of the rectangle. Then click 'Constrain vertical distance'. Enter 20 and click OK.",
-            "Center the rectangle on origin: Select opposite corners of the rectangle and add a symmetric constraint relative to the origin point (0,0). Use Sketch menu > 'Constrain symmetric' or the symmetric constraint button.",
-            "Draw a circle at center: Click the circle tool from the sketch toolbar. Click once at the origin (0,0) to place the center, then click again to set the radius.",
-            "Constrain circle diameter: Click on the circle to select it. Then click 'Constrain diameter' or 'Constrain radius' button. Enter 10 for diameter (or 5 for radius) and click OK.",
-            "Verify sketch is fully constrained: Check that all sketch elements turn green. If any elements are white or blue, they need additional constraints. The sketch should show '0' degrees of freedom.",
-            "Close the sketch: Look for a 'Close' button in the task panel on the right, or in the Sketch menu select 'Close sketch', or press Escape key.",
-            "Apply Pad feature: Click the 'Pad' button in the PartDesign toolbar (looks like an extruded rectangle). In the Pad dialog, set Length to 20mm and click OK.",
+            "Switch to PartDesign workbench: Click the workbench dropdown (shows 'Part' or similar), then click 'PartDesign' from the list.",
+            "Create Body: Click 'Create Body' in PartDesign toolbar. When 'Select Attachment' dialog appears, simply click OK to accept defaults.",
+            "Start new sketch: In Tasks panel on right, click 'New Sketch'. When plane selection appears, click 'XY_Plane' or 'XY-plane', then click OK.",
+            "Activate rectangle tool: Click Sketch menu, hover over 'Sketcher geometries', then click 'Create rectangle'. The rectangle tool is now active.",
+            "Draw rectangle from origin: Click at origin point (0,0), then click at coordinates approximately (20, 30). Rectangle is now drawn.",
+            "Lock corner to origin: Click the bottom-left corner point of rectangle. Click Sketch menu > 'Constrain coincident'. This locks corner to origin.",
+            "Set width to 20mm: Click the BOTTOM EDGE (horizontal line) of rectangle. Click Sketch menu > 'Constrain horizontal distance'. Type 20, click OK.",
+            "Set height to 30mm: Click the LEFT EDGE (vertical line) of rectangle. Click Sketch menu > 'Constrain vertical distance'. Type 30, click OK.",
+            "Close sketch: Click 'Close' button in the Tasks panel on the right side. This exits sketch mode and returns to PartDesign.",
+            "Extrude to 40mm: Click 'Pad' button in PartDesign toolbar (shows box with up arrow). In dialog, change Length to 40, then click OK. Done!",
         ]
     )
 
